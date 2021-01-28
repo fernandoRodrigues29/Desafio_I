@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somatorio dos numeros divisiveis de  3 e 5 </title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        h2{
+            text-align: center;
+        }
+        .conteiner{
+            width: 50vw;
+            margin: 20vw auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .caixa-entrada #numero {
+            width: 94%;
+            border-radius: .25rem;
+            margin-bottom: 5vh;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .370rem .72rem;
+            border: 1px solid #2b3137;
+            font-size: 40px;
+        }
+
+        .caixa-entrada button {
+            width:100%;
+            margin-bottom: 2vh;
+
+
+            font-weight: 400;
+            color:#fff;
+            background-color: #080a8f;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+        }
+
+        #resposta{
+            border: 1px solid #021477;
+            background-color: #c9d9e7;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 3vh;
+            padding-bottom: 3vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="conteiner">
+        <h2>Calcular multiplos de 3 e 5</h2>
+        <div class="caixa-entrada">
+            <input type="number" id="numero" name="numero" maxlength="9999999" placeholder="Digite o numero">
+            <button id="btn-calcular">Calcular</button>
+        </div>
+        <div id="listar-resultado">
+            
+        </div>
+    </div>
+    <script>
+        document.querySelector('#btn-calcular').addEventListener('click',function(evt){
+            // document.querySelector('#listar-resultado').innerHTML = "<div id='resposta'>Espere um Pouco!</div>";
+            var arrMod3 =[];
+            var arrMod5 =[];
+            //recebendo e tratando o dado
+            var numero = document.querySelector('#numero');
+            //converter para inteiro
+            numeroConvert = parseInt(numero.value);
+                while (numeroConvert > 0) {
+                        //verificar se e divisivel por 5 ou 3
+                        if((numeroConvert%3) == 0){
+                            arrMod3.push(numeroConvert);
+                        }
+
+                        if((numeroConvert%5) == 0){
+                            arrMod5.push(numeroConvert);
+                        }
+                            numeroConvert--;
+                }
+                //juntar dois vetores
+                        var arrUnico = arrMod3.concat(arrMod5);
+                            var somaTudo = 0;
+                                for (let index = 0; index < arrUnico.length; index++) {
+                                    somaTudo += arrUnico[index];
+                                }
+                                        //prencher o div resposta
+                                        document.querySelector('#listar-resultado').innerHTML = "<div id='resposta'>R:"+somaTudo+"</div>";
+        });
+    </script>  
+</body>
+</html>
